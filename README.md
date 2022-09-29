@@ -1,4 +1,4 @@
-# React AWS開発ロードマップ
+# React AWS開発
 
 ## 目標
 
@@ -27,9 +27,15 @@
 - [Git](https://www.curict.com/item/60/60bfe0e.html)（Macbookを使用する場合は標準でインストールされているため不要）
 - [Node.js](https://prog-8.com/docs/nodejs-env-win)
 
-## チュートリアル
+# 学習ステップ
+## Github
+1. まずはコレ⇨[サル先生のGit入門](https://backlog.com/ja/git-tutorial/)
+2. [Github desktopの簡単な使い方](https://ferret-plus.com/8498)
+3. 2021年度技術検証PJの勉強会資料を参照※
 
-### React
+最低限できるようになっておきたい操作：push, pull, commit, branch作成・変更
+
+## React
 
 1. Progateの実施（無料会員で実施可能）
 
@@ -46,17 +52,6 @@
 
 - [React.jsを始めよう：動かしながら仕組みを知ろう](https://media.wemotion.co.jp/technology/react-js%E3%82%92%E5%A7%8B%E3%82%81%E3%82%88%E3%81%86%EF%BC%9A%E5%8B%95%E3%81%8B%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89%E4%BB%95%E7%B5%84%E3%81%BF%E3%82%92%E7%9F%A5%E3%82%8D%E3%81%86/)
 - [いまからはじめるReact](https://qiita.com/Kazunori-Kimura/items/d94ddd1a8d8e2e39d504)
-
-### AWS
-
-1. [公式チュートリアル](https://aws.amazon.com/jp/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/)を実施
-
-### Github
-1. まずはコレ⇨[サル先生のGit入門](https://backlog.com/ja/git-tutorial/)
-2. [Github desktopの簡単な使い方](https://ferret-plus.com/8498)
-3. 2021年度技術検証PJの勉強会資料を参照※
-
-最低限できるようになっておきたい操作：push, pull, commit, branch作成・変更
 
 ### その他参考サイト
 - [なるべく早く身につけたいエラーとの向き合い方](https://qiita.com/tak001/items/5f43cb475565667a5bf7)
@@ -75,3 +70,7 @@ npm install
 ```bash　
 npm start
 ```
+
+## AWS
+
+1. [公式チュートリアル](https://aws.amazon.com/jp/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/)を実施

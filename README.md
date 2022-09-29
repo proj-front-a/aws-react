@@ -31,7 +31,7 @@
 ## Github
 1. まずはコレ⇨[サル先生のGit入門](https://backlog.com/ja/git-tutorial/)
 2. [Github desktopの簡単な使い方](https://ferret-plus.com/8498)
-3. 2021年度技術検証PJの勉強会資料を参照※
+3. (2021年度技術検証PJの勉強会資料を参照※)
 
 最低限できるようになっておきたい操作：push, pull, commit, branch作成・変更
 

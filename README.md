@@ -31,7 +31,6 @@
 ## Github
 1. まずはコレ⇨[サル先生のGit入門](https://backlog.com/ja/git-tutorial/)
 2. 2021年度技術検証PJの勉強会資料を参照※
-
 ### Github desktop初期設定
 1. Github desktopを起動し、ログインする。
 2. 以下画面が表示されることを確認する。

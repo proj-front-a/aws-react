@@ -44,11 +44,11 @@
 - [JavascriptⅠ](https://prog-8.com/lessons/es6/study/1)
 （reactを構成している言語。基礎固めとしておすすめ※Javascript経験者はスキップしてもいいかも）
 
-- [React Ⅰ](https://prog-8.com/lessons/react/study/1)（「state」というReactの最も大事な機能を学べます）
+- [React Ⅰ](https://prog-8.com/lessons/react/study/1)（「state」というReactの最も大事な機能を学べる）
 
 2. [公式サイトのチュートリアルを実施](https://ja.reactjs.org/tutorial/tutorial.html)
 
-※公式のチュートリアルは、コードの説明などがなく、動きを理解するのがやや難しいため、以下に参考サイトを記載いたします。
+※公式のチュートリアルは、コードの説明などがなく、動きを理解するのがやや難しいため、以下に参考サイトを記載。
 
 - [React.jsを始めよう：動かしながら仕組みを知ろう](https://media.wemotion.co.jp/technology/react-js%E3%82%92%E5%A7%8B%E3%82%81%E3%82%88%E3%81%86%EF%BC%9A%E5%8B%95%E3%81%8B%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89%E4%BB%95%E7%B5%84%E3%81%BF%E3%82%92%E7%9F%A5%E3%82%8D%E3%81%86/)
 - [いまからはじめるReact](https://qiita.com/Kazunori-Kimura/items/d94ddd1a8d8e2e39d504)

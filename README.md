@@ -16,6 +16,12 @@
 
 2. AWS（S3, Cognito, Lambda, DynamoDB, API Gateway）
 
+## 進め方（仮。2022/10/3時点）
+1. 10月：フロントエンド学習→Reactのみで、家事代行マッチングサイトの実装→バックエンドは作らず、モックで対応
+2. 11月：バックエンド・認証学習→AWSでcognito認証・バックエンド構築
+3. 12月：仕上げ＋バッファ（もしくは、テストツールやってみる？）
+4. 1, 2月：別技術（NestJS, Vue, Cloud functionなど）に挑戦？？
+
 ## 事前準備
 
 1. Githubアカウント登録
@@ -87,5 +93,18 @@ npm start
 ![サンプル画面](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2018.04.53.png)
 
 ## AWS
+### 全体構成図
 
-1. [公式チュートリアル](https://aws.amazon.com/jp/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/)を実施
+![AWS構成図](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-10-03%2017.01.41.png)
+### S3,Cognito
+1. [公式チュートリアル](https://aws.amazon.com/jp/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/)を実施（バックエンド構築のチュートリアルもあるが、不具合で完結できないかつイマイチ理解しにくいため、不要で良いかと）
+
+### dynamodb
+- [初めてのサーバーレスアプリケーション開発 ～DynamoDBにテーブルを作成する～](https://dev.classmethod.jp/articles/serverless-first-dynamodb/)
+
+### Lambda
+- [初めてのサーバーレスアプリケーション開発 ～LambdaでDynamoDBの値を取得する～](https://dev.classmethod.jp/articles/serverless-first-lambda/)
+- 上記サイト以外のLambda関数の実装方法は[「DynamoDBをPython（boto3）を使って試してみた」](https://qiita.com/estaro/items/b329deafdfef790aa355)が参考になる。
+
+### API Gateway
+- [初めてのサーバーレスアプリケーション開発 ～API GatewayからLambdaを呼び出す～](https://dev.classmethod.jp/articles/serverless-first-apigateway/)

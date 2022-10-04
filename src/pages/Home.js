@@ -1,25 +1,25 @@
 import { Link } from "react-router-dom";
 import { useStateMachine } from 'little-state-machine';
 import { updateUser } from "../Store";
-import { HousingData } from "../feed/Feed";
 import { useState } from "react";
 import Calendar from "../component/Calendar";
+import { UseQueryCapacity } from "../hooks/useQueryCapacity";
 
 const Home = () => {
   const { actions, state } = useStateMachine({ updateUser });
   const [searchData, setData] = useState([]);
-  const search = (category) => {
-    const dataByHousing = []
+
+  //検索処理
+  const search = async (category) => {
     if(category === "select mode") {
       setData("")
     } else {
-      HousingData.forEach((data) => {
-        if (data.category === category) dataByHousing.push(data)
-      })
-      if(dataByHousing.length === 0){
+      // 余力情報を取得
+      const getData = await UseQueryCapacity(category);
+      if(getData.length === 0){
         setData("Not Found")
       } else {
-        setData(dataByHousing)
+        setData(getData)
       }
     }
   }

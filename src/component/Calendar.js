@@ -19,7 +19,7 @@ const Calendar = (props) => {
                 <tbody>
                     {props.searchData.map((data) => {
                         return (
-                            <tr key={data.id}>
+                            <tr key={data.date}>
                                 <td>{data.date}</td>
                                 <td>{data.hasCapacity0912 === "1" ? <span onClick={() => console.log(data.date)}>◯</span> : "×"}</td>
                                 <td>{data.hasCapacity1315 === "1" ? <span onClick={() => console.log(data.date)}>◯</span> : "×"}</td>

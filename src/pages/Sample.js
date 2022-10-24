@@ -1,7 +1,9 @@
 import React from 'react'
+import { AxiosSample } from '../component/sample/AxiosSample';
 import FormSample from '../component/sample/FormSample';
 import { RouterSample } from '../component/sample/RouterSample';
 import { SessionSample } from '../component/sample/SessionSample';
+import { UseEffectSample } from '../component/sample/UseEffectSample';
 import { UseStateSample } from '../component/sample/UseStateSample';
 
 export const Sample = () => {
@@ -16,8 +18,10 @@ export const Sample = () => {
         <FormSample />
         <h2>4.little-state-machine</h2>
         <SessionSample />
-        <h2>5.axios</h2>
-        <h2>6.useEffect</h2>
+        <h2>5.useEffect</h2>
+        <UseEffectSample />
+        <h2>6.axios</h2>
+        <AxiosSample />
     </center>
   )
 }

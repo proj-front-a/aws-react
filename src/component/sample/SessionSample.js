@@ -22,6 +22,7 @@ export const SessionSample = () => {
   return (
     <div>
         <p>Javaでいうセッション管理ができる</p>
+        <p>公式サイトは<a href="https://www.npmjs.com/package/little-state-machine" target="_blank" rel="noreferrer">コチラ</a></p>
         <p>{state.yourDetail.name}</p>
         <div onClick={() => actions.updateName({ name: 'bill' })}>
             billに変更
@@ -30,6 +31,7 @@ export const SessionSample = () => {
             johnに変更
         </div>
         <p>※index.jsに以下記述を追記する必要あり</p>
+        
     </div>
   )
 }

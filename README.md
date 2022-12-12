@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# React AWS 開発
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 目標
 
-## Available Scripts
+とりあえず動くモノを１つ作り上げる
+＋新技術に積極的に触れることで、メンバー全員の知識向上をはかる。
 
-In the project directory, you can run:
+## 作成するもの
 
-### `npm start`
+家事代行のマッチングサイト
+⇨ 開発経験を重視するため、要件などは詰めず軽めに実装する。（例外処理なども不要）
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 開発端末
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+私用端末
+（自由度と開発の選択肢確保のため）
+※どうしても OA 端末を使用しなければならない場合、追加で設定が必要なので、井原までご連絡ください。
+※OA 端末使用時には、分離ブラウザを使用してください
 
-### `npm test`
+## 使用する技術
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. React（画面作成）
 
-### `npm run build`
+2. AWS（S3, Cognito, Lambda, DynamoDB, API Gateway）
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## スケジュール
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. 10 月いっぱい：フロントエンド学習（学習ステップ-React の 1. Progate の実施を完了する
+2. 10 月下旬〜11 月上旬：React 勉強会 by 井原（ローカルでの開発の仕方、現場でよく使う機能などのハンズオン）
+3. 11 月上旬〜中旬：実装するサービスの基本設計（作成する機能の決定及び実装分担の決定）
+4. 11 月中旬〜12 月：React でサービスを実装（画面だけ。ローカルで作成・バックエンドは実装せず、API での取得項目はモックで代替）
+5. 12 月：中間報告（React に触れてみた感想・気づき・躓きポイントを共有（日々の進捗確認をもとに発表））
+6. 1〜2 月：AWS でバックエンド実装、本番環境構築
+7. 3 月：実装追い込み、最終報告
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 事前準備
 
-### `npm run eject`
+1. Github アカウント登録
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 社内メールアドレスを使い、[コチラ](https://qiita.com/ayatokura/items/9eabb7ae20752e6dc79d)を参考に登録。
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. 開発に必要なツールをインストール
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [Visual Studio](https://code.visualstudio.com/download)
+- [Github desktop](https://desktop.github.com/)（コマンドプロンプト・ターミナルからも使用可能だが、Git アカウント認証設定がかなり面倒なのでアプリを使用）
+- [Git](https://www.curict.com/item/60/60bfe0e.html)（Macbook を使用する場合は標準でインストールされているため不要）
+- [Node.js](https://prog-8.com/docs/nodejs-env-win)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# 学習ステップ
 
-## Learn More
+## React
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Progate の実施（無料会員で実施可能）
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**【実施するコース】**
 
-### Code Splitting
+- [JavascriptⅠ](https://prog-8.com/lessons/es6/study/1)
+  （react を構成している言語。基礎固めとしておすすめ※Javascript 経験者はスキップしてもいいかも）
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [React Ⅰ](https://prog-8.com/lessons/react/study/1)（「state」という React の最も大事な機能を学べる）
 
-### Analyzing the Bundle Size
+2. [公式サイトのチュートリアルを実施](https://ja.reactjs.org/tutorial/tutorial.html)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+※公式のチュートリアルは、コードの説明などがなく、動きを理解するのがやや難しいため、以下に参考サイトを記載。
 
-### Making a Progressive Web App
+- [React.js を始めよう：動かしながら仕組みを知ろう](https://media.wemotion.co.jp/technology/react-js%E3%82%92%E5%A7%8B%E3%82%81%E3%82%88%E3%81%86%EF%BC%9A%E5%8B%95%E3%81%8B%E3%81%97%E3%81%AA%E3%81%8C%E3%82%89%E4%BB%95%E7%B5%84%E3%81%BF%E3%82%92%E7%9F%A5%E3%82%8D%E3%81%86/)
+- [いまからはじめる React](https://qiita.com/Kazunori-Kimura/items/d94ddd1a8d8e2e39d504)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### その他参考サイト
 
-### Advanced Configuration
+- [なるべく早く身につけたいエラーとの向き合い方](https://qiita.com/tak001/items/5f43cb475565667a5bf7)
+- [npm 入門](https://qiita.com/maitake9116/items/7825d90c09f3e2f87dea)
+- [DeepL(翻訳サイト。調査の際とても役立ちます)](https://www.deepl.com/ja/translator?referrer=https%3A%2F%2Fwww.google.com%2F)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Github
 
-### Deployment
+1. まずはコレ ⇨[サル先生の Git 入門](https://backlog.com/ja/git-tutorial/)
+2. 2021 年度技術検証 PJ の勉強会資料を参照※
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Github desktop 初期設定
 
-### `npm run build` fails to minify
+1. Github desktop を起動し、ログインする。
+2. 以下画面が表示されることを確認する。
+   ![Github初期画面](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2017.36.38.png)
+3. 右下に表示されている「proj-front-a/awas-reaact」リポジトリを選択し、Clone ボタンを押下する。
+   ![クローンするリポジトリを選択](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2017.37.05.png)
+4. 以下画面が表示されたら、「Clone」ボタンを押下する。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![リポジトリをクローンする](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2017.37.48.png)
+
+5. 以下画面が表示されていれば、ローカル環境にリポジトリのソースコードが取り込めている。
+   ![リポジトリが表示される](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2017.38.33.png)
+6. 「Open in Visual Studio Code」ボタンを押すと、VS Code を起動できる。
+   ![VS Codeを起動](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2017.38.58.png)
+
+## いよいよ実装スタート！
+
+### まずはサンプルコードを動かしてみる。
+
+1. Github desktop で、「current branch」をクリックし、「origin/react-sample」を選択し、ブランチを切り替える。
+   ![ブランチを切り替える](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2017.39.09.png)
+2. Github desktop から、VS Code を開く。
+   ![VS Codeを開く](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2017.39.30.png)
+3. VS Code 内でターミナル(=コマンドプロンプト)を起動し、以下を実行する。
+   ![ターミナルを起動](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2017.40.09.png)
+
+```bash　
+npm install
+```
+
+4. 以下コマンドを実行し、localhost:3000 が起動することを確認する。
+
+```bash　
+npm start
+```
+
+5. 以下画面が表示されることを確認する。簡単なサンプルであるため、色々操作してみる。
+   ![サンプル画面](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-09-29%2018.04.53.png)
+
+## AWS
+
+### 全体構成図
+
+![AWS構成図](img/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-10-03%2017.01.41.png)
+
+### S3,Cognito
+
+1. [公式チュートリアル](https://aws.amazon.com/jp/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/)を実施（バックエンド構築のチュートリアルもあるが、不具合で完結できないかつイマイチ理解しにくいため、不要で良いかと）
+
+### dynamodb
+
+- [初めてのサーバーレスアプリケーション開発 ～ DynamoDB にテーブルを作成する～](https://dev.classmethod.jp/articles/serverless-first-dynamodb/)
+
+### Lambda
+
+- [初めてのサーバーレスアプリケーション開発 ～ Lambda で DynamoDB の値を取得する～](https://dev.classmethod.jp/articles/serverless-first-lambda/)
+- 上記サイト以外の Lambda 関数の実装方法は[「DynamoDB を Python（boto3）を使って試してみた」](https://qiita.com/estaro/items/b329deafdfef790aa355)が参考になる。
+
+### API Gateway
+
+- [初めてのサーバーレスアプリケーション開発 ～ API Gateway から Lambda を呼び出す～](https://dev.classmethod.jp/articles/serverless-first-apigateway/)

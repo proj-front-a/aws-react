@@ -39,6 +39,9 @@ const Home = () => {
         <div>
           サンプルは<Link to={`/sample/`}>こちら</Link>
         </div>
+        <div>
+          bootstrap使用例は<Link to={`/bootstrap/`}>こちら</Link>
+        </div>
       </center>
     );
   }

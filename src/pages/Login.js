@@ -57,7 +57,7 @@ const Login = () => {
       </form>
       <br />
       <div>
-        新規登録は<Link to={`/register/`}>こちら</Link>
+        新規登録は<Link to={`/register-user/`}>こちら</Link>
       </div>
       <div>
         <Link to={`/`}>ホームに戻る</Link>

@@ -36,6 +36,9 @@ const Home = () => {
         <div>
           新規登録は<Link to={`/register-user/`}>こちら</Link>
         </div>
+        <div>
+          サンプルは<Link to={`/sample/`}>こちら</Link>
+        </div>
       </center>
     );
   }

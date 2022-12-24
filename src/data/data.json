@@ -29,6 +29,11 @@
       "id": 6,
       "email": "user11@test.com",
       "password": "test1"
+    },
+    {
+      "id": 7,
+      "email": "user122@test.com",
+      "password": "user1"
     }
   ],
   "capacity": [

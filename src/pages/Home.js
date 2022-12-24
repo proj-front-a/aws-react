@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../Store";
-import { HousingCapacity } from "../data/Feed";
+import axios from "axios";
 import { useState } from "react";
 import Calendar from "../component/Calendar";
 
@@ -14,13 +14,10 @@ const Home = () => {
       setData("");
     } else {
       // 家事代行情報を取得する
-      // TODO③:ここの処理をAPIから取得してくるよう変更
-      // ヒント：axiosを使う（React入門の資料を参考に！）
-      // リクエスト方式：GET（値の取得）
-      // http://localhost:3004/categoryを実行することでjson上のuser情報を返却できる。
-      HousingCapacity.forEach((data) => {
-        if (data.category === category) searchCapacity.push(data);
-      });
+      const { data } = await axios.get(
+        `http://localhost:3004/capacity?category=${category}`
+      );
+      searchCapacity = data;
       if (searchCapacity.length === 0) {
         setData("Not Found");
       } else {

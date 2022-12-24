@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../Store";
 import { useForm } from "react-hook-form";
-import { User } from "../data/Feed";
+import axios from "axios";
 
 const Login = () => {
   const [msg, setMsg] = useState("");
@@ -15,13 +15,11 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (values) => {
-    // TODO①:ここの処理をAPIから取得してくるよう変更
-    // ヒント：axiosを使う（React入門の資料を参考に！）
-    // リクエスト方式：GET（値の取得）
-    // 今回、json-serverというライブラリを利用することで、APIのモックを作成している。
-    // https://zenn.dev/yumemi_inc/articles/2f298f3ea7a93c
-    // http://localhost:3004/usersを実行することでjson上のuser情報を返却できる。
-    const existUser = User.find((user) => user.email === values.email);
+    // 入力された情報がすでに登録されているか確認するc
+    const { data } = await axios.get(
+      `http://localhost:3004/users?email=${values.email}`
+    );
+    const existUser = data[0];
     if (existUser && existUser.password === values.password) {
       actions.updateUser({ email: values.email });
       navigate("/");

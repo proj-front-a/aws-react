@@ -65,7 +65,8 @@ const Home = () => {
           <option value="料理">料理</option>
           <option value="洗濯">洗濯</option>
         </select>
-        <Calendar searchData={searchData} />
+        {/* 更新後のデータを画面に反映するため、setDataメソッドを子要素で実行できるようにする。 */}
+        <Calendar searchData={searchData} setData={setData} />
       </div>
     </center>
   );

@@ -26,28 +26,28 @@ const Calendar = (props) => {
                   {data.capacity0912 === 0 ? (
                     "×"
                   ) : (
-                    <span onClick={() => console.log(data.date)}>◯</span>
+                    <div onClick={() => console.log(data.date)}>◯</div>
                   )}
                 </td>
                 <td>
                   {data.capacity1315 === 0 ? (
                     "×"
                   ) : (
-                    <span onClick={() => console.log(data.date)}>◯</span>
+                    <div onClick={() => console.log(data.date)}>◯</div>
                   )}
                 </td>
                 <td>
                   {data.capacity1517 === 0 ? (
                     "×"
                   ) : (
-                    <span onClick={() => console.log(data.date)}>◯</span>
+                    <div onClick={() => console.log(data.date)}>◯</div>
                   )}
                 </td>
                 <td>
                   {data.capacity1719 === 0 ? (
                     "×"
                   ) : (
-                    <span onClick={() => console.log(data.date)}>◯</span>
+                    <div onClick={() => console.log(data.date)}>◯</div>
                   )}
                 </td>
               </tr>

@@ -13,6 +13,7 @@ const Home = () => {
     if (category === "select mode") {
       setData("");
     } else {
+      // 家事代行情報を取得する
       // TODO③:ここの処理をAPIから取得してくるよう変更
       // ヒント：axiosを使う（React入門の資料を参考に！）
       // リクエスト方式：GET（値の取得）

@@ -15,6 +15,7 @@ const RegisterUser = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (values) => {
+    // 入力された情報がすでに登録されているかどうか確認する
     // TODO①:ここの処理をAPIから取得してくるよう変更
     // ヒント：axiosを使う（React入門の資料を参考に！）
     // リクエスト方式：GET（値の取得）
@@ -24,6 +25,7 @@ const RegisterUser = () => {
       console.log(existUser);
       setMsg("Eメールはすでに登録されています");
     } else {
+      // ユーザーの追加登録を行う
       // TODO②:ここの処理をAPIから取得してくるよう変更
       // ヒント：axiosを使う（React入門の資料を参考に！）
       // リクエスト方式：POST（値の追加）

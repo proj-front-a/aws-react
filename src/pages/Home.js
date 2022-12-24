@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../Store";
-import { HousingData } from "../data/Feed";
+import { HousingCapacity } from "../data/Feed";
 import { useState } from "react";
 import Calendar from "../component/Calendar";
 
@@ -13,7 +13,7 @@ const Home = () => {
     if (category === "select mode") {
       setData("");
     } else {
-      HousingData.forEach((data) => {
+      HousingCapacity.forEach((data) => {
         if (data.category === category) dataByHousing.push(data);
       });
       if (dataByHousing.length === 0) {
@@ -63,7 +63,8 @@ const Home = () => {
           <option value="料理">料理</option>
           <option value="洗濯">洗濯</option>
         </select>
-        <Calendar searchData={searchData} />
+        {/* 更新後のデータを画面に反映するため、setDataメソッドを子要素で実行できるようにする。 */}
+        <Calendar searchData={searchData} setData={setData} />
       </div>
     </center>
   );

@@ -14,11 +14,22 @@ const RegisterUser = () => {
     register,
     formState: { errors },
   } = useForm();
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
+    // TODO①:ここの処理をAPIから取得してくるよう変更
+    // ヒント：axiosを使う（React入門の資料を参考に！）
+    // リクエスト方式：GET（値の取得）
+    // http://localhost:3004/usersを実行することでjson上のuser情報を返却できる。
     const existUser = User.filter((data) => data.email === values.email);
     if (existUser.length !== 0) {
+      console.log(existUser);
       setMsg("Eメールはすでに登録されています");
     } else {
+      // TODO②:ここの処理をAPIから取得してくるよう変更
+      // ヒント：axiosを使う（React入門の資料を参考に！）
+      // リクエスト方式：POST（値の追加）
+      // POSTでのaxios実行方法は以下を参照
+      // https://www.sukerou.com/2019/05/axios.html
+      // 登録するidは一意であることに注意！
       User.push(values);
       actions.updateUser({ email: values.email });
       navigate("/");

@@ -1,25 +1,29 @@
 import { Link } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../Store";
-import { HousingData } from "../data/Feed";
+import { HousingCapacity } from "../data/Feed";
 import { useState } from "react";
 import Calendar from "../component/Calendar";
 
 const Home = () => {
   const { actions, state } = useStateMachine({ updateUser });
   const [searchData, setData] = useState([]);
-  const search = (category) => {
-    const dataByHousing = [];
+  const search = async (category) => {
+    let searchCapacity = [];
     if (category === "select mode") {
       setData("");
     } else {
-      HousingData.forEach((data) => {
-        if (data.category === category) dataByHousing.push(data);
+      // TODO③:ここの処理をAPIから取得してくるよう変更
+      // ヒント：axiosを使う（React入門の資料を参考に！）
+      // リクエスト方式：GET（値の取得）
+      // http://localhost:3004/categoryを実行することでjson上のuser情報を返却できる。
+      HousingCapacity.forEach((data) => {
+        if (data.category === category) searchCapacity.push(data);
       });
-      if (dataByHousing.length === 0) {
+      if (searchCapacity.length === 0) {
         setData("Not Found");
       } else {
-        setData(dataByHousing);
+        setData(searchCapacity);
       }
     }
   };

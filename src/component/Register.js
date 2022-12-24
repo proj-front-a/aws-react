@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const getNewCapacity = (target, time) => {
   switch (time) {
@@ -33,16 +34,22 @@ export const Register = (props) => {
   const closeModal = () => {
     setModal(false);
   };
-  const register = () => {
-    // TODO②: 登録処理を実装する
-    // 更新後のデータ
+  const register = async () => {
+    // 更新する情報を取得する
     const newCapacity = getNewCapacity(props.target, props.time);
-    // ヒント：オブジェクト配列の更新方法はどうやるのか？
-    // 以下に処理をかく（現状は更新後のデータを出力している）
-    console.log(newCapacity);
+    // 更新処理を実行
+    await axios.put(
+      `http://localhost:3004/capacity/${newCapacity.id}`,
+      newCapacity
+    );
     alert("登録しました！");
     // 更新後のデータを画面に反映する
     // カテゴリーを指定して、家事代行情報を取得するAPIを実行し、その値を反映する
+    const { data } = await axios.get(
+      `http://localhost:3004/capacity?category=${newCapacity.category}`
+    );
+    const searchCapacity = data;
+    props.setData(searchCapacity);
     closeModal();
   };
   return (
@@ -52,9 +59,10 @@ export const Register = (props) => {
         <div id="modal">
           <div className="modalContent">
             <p>家事代行を予約</p>
-            {/* TODO①：各項目に選択した値を表示する。（ヒント：propsを使う。親コンポーネントで渡しているあたいが何かに注目） */}
-            <p>カテゴリー：</p>
-            <p>日時：</p>
+            <p>カテゴリー：{props.target.category}</p>
+            <p>
+              日時：{props.target.date} {props.time}
+            </p>
             <button onClick={register} className="btn btn-primary mb-3">
               予約
             </button>

@@ -34,6 +34,11 @@
       "id": 10,
       "email": "angie07.inet@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": 8,
+      "email": "ando@tg-inet.co.jp",
+      "password": "afdasdf"
     }
   ],
   "capacity": [

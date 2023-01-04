@@ -45,9 +45,8 @@ const RegisterUser = () => {
       // https://www.sukerou.com/2019/05/axios.html
       // 登録するidは一意であることに注意！
       await axios.post("http://localhost:3004/users", {
-        //idは変数にしたい
-        // id: users.id.length + 1,
-        id: 10,
+        //idは連番で付与する
+        id: UserProfiles.length + 1,
 
         email: values.email,
         password: values.password,

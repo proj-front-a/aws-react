@@ -24,7 +24,6 @@ const Login = () => {
     axios
       .get("http://localhost:3004/users")
       .then((res) => {
-        console.log(res.data);
         const data = res.data.map((users) => ({
           id: users.id,
           email: users.email,

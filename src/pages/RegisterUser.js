@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { User } from "../data/Feed";
 import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../Store";
+import axios from "axios";
 
 const RegisterUser = () => {
   const [msg, setMsg] = useState("");
@@ -14,24 +15,43 @@ const RegisterUser = () => {
     register,
     formState: { errors },
   } = useForm();
+
+  const [UserProfiles, setUserProfiles] = useState();
   const onSubmit = async (values) => {
     // 入力された情報がすでに登録されているかどうか確認する
     // TODO①:ここの処理をAPIから取得してくるよう変更
-    // ヒント：axiosを使う（React入門の資料を参考に！）
-    // リクエスト方式：GET（値の取得）
+    await axios
+      .get("http://localhost:3004/users")
+      .then((res) => {
+        const data = res.data.map((users) => ({
+          id: users.id,
+          email: users.email,
+          password: users.password,
+        }));
+        setUserProfiles(data);
+        console.log(UserProfiles);
+      })
+      .catch((err) => console.log(err));
     // http://localhost:3004/usersを実行することでjson上のuser情報を返却できる。
-    const existUser = User.filter((data) => data.email === values.email);
+    const existUser = UserProfiles.filter(
+      (users) => users.email === values.email
+    );
     if (existUser.length !== 0) {
       console.log(existUser);
       setMsg("Eメールはすでに登録されています");
     } else {
       // ユーザーの追加登録を行う
       // TODO②:ここの処理をAPIから取得してくるよう変更
-      // ヒント：axiosを使う（React入門の資料を参考に！）
-      // リクエスト方式：POST（値の追加）
-      // POSTでのaxios実行方法は以下を参照
       // https://www.sukerou.com/2019/05/axios.html
       // 登録するidは一意であることに注意！
+      await axios.post("http://localhost:3004/users", {
+        //idは変数にしたい
+        // id: users.id.length + 1,
+        id: 10,
+
+        email: values.email,
+        password: values.password,
+      });
       User.push(values);
       actions.updateUser({ email: values.email });
       navigate("/");

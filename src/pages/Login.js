@@ -21,7 +21,7 @@ const Login = () => {
     // ヒント：axiosを使う（React入門の資料を参考に！）
     // リクエスト方式：GET（値の取得）
     // 今回、json-serverというライブラリを利用することで、APIのモックを作成している。
-    axios
+    await axios
       .get("http://localhost:3004/users")
       .then((res) => {
         const data = res.data.map((users) => ({

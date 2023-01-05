@@ -1,31 +1,41 @@
 import { Link } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../Store";
-import { HousingCapacity } from "../data/Feed";
 import { useState } from "react";
 import Calendar from "../component/Calendar";
+import axios from "axios";
 
 const Home = () => {
   const { actions, state } = useStateMachine({ updateUser });
   const [searchData, setData] = useState([]);
   const search = async (category) => {
     let searchCapacity = [];
+    console.log("選択されたカテゴリーは" + category);
     if (category === "select mode") {
       setData("");
     } else {
       // 家事代行情報を取得する
       // TODO③:ここの処理をAPIから取得してくるよう変更
-      // ヒント：axiosを使う（React入門の資料を参考に！）
-      // リクエスト方式：GET（値の取得）
-      // http://localhost:3004/categoryを実行することでjson上のuser情報を返却できる。
-      HousingCapacity.forEach((data) => {
-        if (data.category === category) searchCapacity.push(data);
-      });
+      console.log("axiosローディング表示開始");
+      await axios
+        .get("http://localhost:3004/capacity")
+        .then((res) => {
+          console.log("axiosデータ取得成功");
+          res.data.forEach((data) => {
+            if (data.category === category) searchCapacity.push(data);
+          });
+          console.log("一致したカテゴリーは・・・");
+          console.log(searchCapacity);
+        })
+        .catch((err) => console.log(err));
+
       if (searchCapacity.length === 0) {
         setData("Not Found");
       } else {
         setData(searchCapacity);
       }
+      console.log("searchDataにセットさた検索対象のカテゴリーは・・・");
+      console.log(searchData);
     }
   };
   const logout = () => {

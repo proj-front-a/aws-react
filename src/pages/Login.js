@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <center>
       <h1>ログインページ</h1>
-      <Card style={{ width: "25rem" }}>
+      <Card border="primary" style={{ width: "25rem" }}>
         <Card.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -87,7 +87,7 @@ const Login = () => {
             {errors.password && errors.password.message}
             <p>{msg}</p>
             <Button variant="primary" type="submit">
-              Submit
+              ログイン
             </Button>
           </Form>
         </Card.Body>

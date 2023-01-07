@@ -4,6 +4,7 @@ import { updateUser } from "../Store";
 import { useState } from "react";
 import Calendar from "../component/Calendar";
 import axios from "axios";
+import { Card } from "react-bootstrap";
 
 const Home = () => {
   const { actions, state } = useStateMachine({ updateUser });
@@ -45,18 +46,38 @@ const Home = () => {
     return (
       <center>
         <h1>ホーム</h1>
-        <div>
-          ログインは<Link to={`/login/`}>こちら</Link>
-        </div>
-        <div>
-          新規登録は<Link to={`/register-user/`}>こちら</Link>
-        </div>
-        <div>
-          サンプルは<Link to={`/sample/`}>こちら</Link>
-        </div>
-        <div>
-          bootstrap使用例は<Link to={`/bootstrap/`}>こちら</Link>
-        </div>
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>ログイン</Card.Title>
+            <Card.Text>
+              ログインは<Link to={`/login/`}>こちら</Link>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>新規登録</Card.Title>
+            <Card.Text>
+              新規登録は<Link to={`/register-user/`}>こちら</Link>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>サンプル</Card.Title>
+            <Card.Text>
+              サンプルは<Link to={`/sample/`}>こちら</Link>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>bootstrap使用例</Card.Title>
+            <Card.Text>
+              bootstrap使用例は<Link to={`/bootstrap/`}>こちら</Link>
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </center>
     );
   }

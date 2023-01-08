@@ -1,6 +1,13 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 const Calendar = (props) => {
+  //onClickボタンから渡されたpropsを変数に詰めて、予約確認画面に渡す
+  const handleOnClickReserv = (props) => {
+    console.log(props);
+    return <div>{props}</div>;
+  };
+
   if (props.searchData.length === 0) return <div></div>;
   if (props.searchData === "") return <div></div>;
   if (props.searchData === "Not Found")
@@ -47,7 +54,19 @@ const Calendar = (props) => {
                   {data.capacity1719 === 0 ? (
                     "×"
                   ) : (
-                    <div onClick={() => console.log(data.date)}>◯</div>
+                    //handleOnClickResorvのpropsにdata.id, data.capacity1719を渡す
+                    <Button
+                      variant="link"
+                      onClick={() => {
+                        handleOnClickReserv([
+                          data.category,
+                          data.date,
+                          "capacity1719",
+                        ]);
+                      }}
+                    >
+                      ◯
+                    </Button>
                   )}
                 </td>
               </tr>
@@ -55,6 +74,26 @@ const Calendar = (props) => {
           })}
         </tbody>
       </table>
+
+      {/* <br />
+      <br />
+      <Button>日程を選択する</Button>
+
+      <h2>家事代行を検索</h2>
+      <Form.Select
+        aria-label="Default select example"
+        size="lg"
+        // onChange={(e) => {
+        //   search(e.currentTarget.value);
+        // }}
+      >
+        <option value="select mode" defaultChecked>
+          -- カテゴリーを検索してください --
+        </option>
+        <option value="掃除">掃除</option>
+        <option value="料理">料理</option>
+        <option value="洗濯">洗濯</option>
+      </Form.Select> */}
     </div>
   );
 };

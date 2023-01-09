@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Calendar = (props) => {
+  const [reserv, setReserv] = useState({
+    category: "",
+    date: "",
+    capacity: "",
+  });
+
   //onClickボタンから渡されたpropsを変数に詰めて、予約確認画面に渡す
   const handleOnClickReserv = (props) => {
     console.log(props);
-    return <div>{props}</div>;
+    const category = { category: props[0] };
+    const date = { date: props[1] };
+    const capacity = { capacity: props[2] };
+
+    // setReserv(Object.assign(category, date, capacity));
+    setReserv(Object.assign(reserv, { category, date, capacity }));
+    console.log(category, date, capacity);
+    console.log(reserv);
+    // setReserv([
+    //   ...reserv,
+    //   {
+    //     category: category,
+    //     date: date,
+    //     capacity: capacity,
+    //   },
+    // ]);
   };
 
   if (props.searchData.length === 0) return <div></div>;
@@ -55,18 +77,20 @@ const Calendar = (props) => {
                     "×"
                   ) : (
                     //handleOnClickResorvのpropsにdata.id, data.capacity1719を渡す
-                    <Button
-                      variant="link"
-                      onClick={() => {
-                        handleOnClickReserv([
-                          data.category,
-                          data.date,
-                          "capacity1719",
-                        ]);
-                      }}
-                    >
-                      ◯
-                    </Button>
+                    <Link to="/reserv/" state={{ reserv }}>
+                      <Button
+                        variant="link"
+                        onClick={() => {
+                          handleOnClickReserv([
+                            data.category,
+                            data.date,
+                            "capacity1719",
+                          ]);
+                        }}
+                      >
+                        ◯
+                      </Button>
+                    </Link>
                   )}
                 </td>
               </tr>

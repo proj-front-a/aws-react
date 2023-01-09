@@ -5,6 +5,7 @@ import { Store } from "./Store";
 import { Sample } from "./pages/Sample";
 import RegisterUser from "./pages/RegisterUser";
 import { Bootstrap } from "./pages/Bootstrap";
+import ModifyReserv from "./pages/ModifyReserv";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path={`/login/`} element={<Login />} />
           <Route path={`/sample/`} element={<Sample />} />
           <Route path={`/bootstrap/`} element={<Bootstrap />} />
+          <Route path={`/reserv/`} element={<ModifyReserv />} />
         </Routes>
       </BrowserRouter>
     </>

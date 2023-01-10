@@ -12,9 +12,12 @@ const Calendar = (props) => {
   //onClickボタンから渡されたpropsを変数に詰めて、予約確認画面に渡す
   const handleOnClickReserv = (props) => {
     console.log(props);
-    const category = { category: props[0] };
-    const date = { date: props[1] };
-    const capacity = { capacity: props[2] };
+    // const category = { category: props[0] };
+    // const date = { date: props[1] };
+    // const capacity = { capacity: props[2] };
+    const category = props[0];
+    const date = props[1];
+    const capacity = props[2];
 
     // setReserv(Object.assign(category, date, capacity));
     setReserv(Object.assign(reserv, { category, date, capacity }));

@@ -3,11 +3,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Calendar = (props) => {
-  const [reserv, setReserv] = useState({
-    // category: "",
-    // date: "",
-    // capacity: "",
-  });
+  const [reserv, setReserv] = useState({});
 
   //onClickボタンから渡されたpropsを変数に詰めて、予約確認画面に渡す
   const handleOnClickReserv = (props) => {
@@ -18,25 +14,7 @@ const Calendar = (props) => {
     // 現在の予約状態をstateに保存する
     setReserv(Object.assign(reserv, { currentCapacity }));
     console.log(reserv, updateCapacity);
-    // オブジェクトのうち、onclickで渡された時間帯（例：capacity1719）と同じ時間帯の値を「1⇒0に変更する」
-    // setReserv({ ...reserv, updateCapacity: 0 });
-    setReserv((reserv) =>
-      reserv.map((currentCapacity) =>
-        "capacity1719" === updateCapacity
-          ? { [updateCapacity]: 0 }
-          : currentCapacity
-      )
-    );
     console.log(reserv);
-
-    // setReserv([
-    //   ...reserv,
-    //   {
-    //     category: category,
-    //     date: date,
-    //     capacity: capacity,
-    //   },
-    // ]);
   };
 
   if (props.searchData.length === 0) return <div></div>;
@@ -91,13 +69,6 @@ const Calendar = (props) => {
                         variant="link"
                         onClick={() => {
                           handleOnClickReserv([data, "capacity1719"]);
-                          // handleOnClickReserv([
-                          //   data.id,
-                          //   data.category,
-                          //   data.date,
-                          //   "capacity1719",
-                          //   data.capacity1719,
-                          // ]);
                         }}
                       >
                         ◯

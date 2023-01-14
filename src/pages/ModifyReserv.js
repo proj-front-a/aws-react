@@ -17,11 +17,12 @@ const ModifyReserv = () => {
 
   const fixedReservClick = async (props) => {
     setFixCapacity(0);
-    const availability = fixCapacity;
+    const availability = `${capacity}: ${fixCapacity}`;
     console.log(availability);
+    console.log(id);
 
     await axios
-      .put("http://localhost:3004/capacity/{id},fixReserv")
+      .put("http://localhost:3004/capacity/{id}", availability)
       .then((res) => {})
       .catch((err) => console.log(err));
   };

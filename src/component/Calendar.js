@@ -12,7 +12,8 @@ const Calendar = (props) => {
     const updateCapacity = props[1];
 
     // 現在の予約状態をstateに保存する
-    setReserv(Object.assign(reserv, { currentCapacity }));
+    setReserv(Object.assign(reserv, [{ currentCapacity }, updateCapacity]));
+    // setReserv(Object.assign(reserv, { currentCapacity }));
     console.log(reserv, updateCapacity);
     console.log(reserv);
   };
@@ -56,7 +57,16 @@ const Calendar = (props) => {
                   {data.capacity1517 === 0 ? (
                     "×"
                   ) : (
-                    <div onClick={() => console.log(data.date)}>◯</div>
+                    <Link to="/reserv/" state={{ reserv }}>
+                      <Button
+                        variant="link"
+                        onClick={() => {
+                          handleOnClickReserv([data, "capacity1517"]);
+                        }}
+                      >
+                        ◯
+                      </Button>
+                    </Link>
                   )}
                 </td>
                 <td>

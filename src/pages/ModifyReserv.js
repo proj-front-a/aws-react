@@ -27,6 +27,7 @@ const ModifyReserv = () => {
   const handleOnClickFixedReserv = () => {
     // オブジェクトのうち、fixedReservClickで渡された時間帯（例：capacity1719）と同じ時間帯の値を「1⇒0に変更する」
     // ToDo:「予約ボタン」を一回押しただけだと反映されない。2回目に反映される（処理の順番に問題あり？）
+    //　解決策の参考https://qiita.com/zoukun97/items/0fb14524c33894cc38dd
     switch (updatecapacity) {
       case "capacity0912":
         setFixCapacity({

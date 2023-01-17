@@ -18,25 +18,24 @@ const Login = () => {
   } = useForm();
   const [UserProfiles, setUserProfiles] = useState();
   const onSubmit = async (values) => {
-    // TODO①:ここの処理をAPIから取得してくるよう変更
-    // ヒント：axiosを使う（React入門の資料を参考に！）
-    // リクエスト方式：GET（値の取得）
-    // 今回、json-serverというライブラリを利用することで、APIのモックを作成している。
-    axios
-      .get("http://localhost:3004/users")
-      .then((res) => {
-        const data = res.data.map((users) => ({
-          id: users.id,
-          email: users.email,
-          password: users.password,
-        }));
-        setUserProfiles(data);
-        console.log(UserProfiles);
-      })
-      .catch((err) => console.log(err));
-    // https://zenn.dev/yumemi_inc/articles/2f298f3ea7a93c
-    // http://localhost:3004/usersを実行することでjson上のuser情報を返却できる。
+    try {
+      const res = await axios.get("http://localhost:3004/users");
+      const data = await res.data.map((users) => ({
+        id: users.id,
+        email: users.email,
+        password: users.password,
+      }));
+      setUserProfiles(data);
+      console.log(UserProfiles);
+    } catch (err) {
+      console.log(err);
+    }
+
     const existUser = UserProfiles.find(
+      // ToDo:「ログイン」を一回押しただけだと反映されない。2回目に反映される（処理の順番に問題あり？）
+      //　解決策の参考https://qiita.com/zoukun97/items/0fb14524c33894cc38dd
+      //             https://qiita.com/soarflat/items/1a9613e023200bbebcb3
+      //             https://qiita.com/shisama/items/61cdcc09dc69fd8d3127
       (users) => users.email === values.email
     );
     if (existUser && existUser.password === values.password) {

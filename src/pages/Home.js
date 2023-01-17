@@ -4,6 +4,11 @@ import { updateUser } from "../Store";
 import axios from "axios";
 import { useState } from "react";
 import Calendar from "../component/Calendar";
+import Button from "react-bootstrap/Button";
+import { Store } from "../Store";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Navbar';
+import NavItem from 'react-bootstrap/NavItem';
 
 const Home = () => {
   const { actions, state } = useStateMachine({ updateUser });
@@ -49,11 +54,19 @@ const Home = () => {
   }
   return (
     <center>
-      <h1>ホーム</h1>
-      <button onClick={logout}>ログアウト</button>
-      <div>
+      <Navbar bg="dark" variant="dark" className="text-light">
+      <Nav className="me-auto">
+        <NavItem className="display-6">家事代行サービス</NavItem>
+      </Nav>
+      <Nav>
+        <NavItem><Store /></NavItem>
+        <NavItem><Button variant="secondary" onClick={logout}>ログアウト</Button></NavItem>
+      </Nav>
+      </Navbar>
+      <div className="w-75">
+        <h1 className="m-3">ホーム</h1>
         <h2>家事代行を検索</h2>
-        <select
+        <select className="form-select form-select-lg mb-3"
           onChange={(e) => {
             search(e.currentTarget.value);
           }}

@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { Store } from "./Store";
 import { Sample } from "./pages/Sample";
 import RegisterUser from "./pages/RegisterUser";
 import { Bootstrap } from "./pages/Bootstrap";
@@ -9,7 +8,6 @@ import { Bootstrap } from "./pages/Bootstrap";
 const App = () => {
   return (
     <>
-      <Store />
       <BrowserRouter>
         <Routes>
           <Route path={`/`} element={<Home />} />

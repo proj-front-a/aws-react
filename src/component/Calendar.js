@@ -1,5 +1,6 @@
 import React from "react";
 import { Register } from "../component/Register";
+import Table from 'react-bootstrap/Table';
 
 const Calendar = (props) => {
   if (props.searchData.length === 0) return <div></div>;
@@ -8,7 +9,7 @@ const Calendar = (props) => {
     return <div> 検索結果がありません。</div>;
   return (
     <div>
-      <table border="1">
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>日付</th>
@@ -27,12 +28,14 @@ const Calendar = (props) => {
                   {data.capacity0912 === 0 ? (
                     "×"
                   ) : (
-                    //  更新後のデータを画面に反映するため、setDataメソッドを子要素で実行できるようにする。
                     <Register
                       date={data.date}
                       target={data}
                       text="◯"
                       time="9:00-12:00"
+                      //  更新後のデータを画面に反映するため、searchDataを子要素で取得できるようにする。
+                      searchData={props.searchData}
+                      //  更新後のデータを画面に反映するため、setDataメソッドを子要素で実行できるようにする。
                       setData={props.setData}
                     />
                   )}
@@ -46,6 +49,7 @@ const Calendar = (props) => {
                       target={data}
                       text="◯"
                       time="13:00-15:00"
+                      searchData={props.searchData}
                       setData={props.setData}
                     />
                   )}
@@ -59,6 +63,7 @@ const Calendar = (props) => {
                       target={data}
                       text="◯"
                       time="15:00-17:00"
+                      searchData={props.searchData}
                       setData={props.setData}
                     />
                   )}
@@ -72,6 +77,7 @@ const Calendar = (props) => {
                       target={data}
                       text="◯"
                       time="17:00-19:00"
+                      searchData={props.searchData}
                       setData={props.setData}
                     />
                   )}
@@ -80,7 +86,7 @@ const Calendar = (props) => {
             );
           })}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };

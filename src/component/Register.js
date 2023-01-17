@@ -38,18 +38,18 @@ export const Register = (props) => {
     // 更新する情報を取得する
     const newCapacity = getNewCapacity(props.target, props.time);
     // 更新処理を実行
-    await axios.put(
+    const {data} = await axios.put(
       `http://localhost:3004/capacity/${newCapacity.id}`,
       newCapacity
     );
     alert("登録しました！");
     // 更新後のデータを画面に反映する
-    // カテゴリーを指定して、家事代行情報を取得するAPIを実行し、その値を反映する
-    const { data } = await axios.get(
-      `http://localhost:3004/capacity?category=${newCapacity.category}`
-    );
-    const searchCapacity = data;
-    props.setData(searchCapacity);
+    // 更新後の値を反映したsearchDataをset関数で設定してあげる(API実行回数節約が可能！)
+        const newData = props.searchData.map((existData) => {
+      if(existData.id === data.id) return data;
+      return existData;
+    })
+    props.setData(newData);
     closeModal();
   };
   return (
@@ -58,7 +58,7 @@ export const Register = (props) => {
       {showModal ? (
         <div id="modal">
           <div className="modalContent">
-            <p>家事代行を予約</p>
+            <h2 className="mb-3">家事代行を予約</h2>
             <p>カテゴリー：{props.target.category}</p>
             <p>
               日時：{props.target.date} {props.time}

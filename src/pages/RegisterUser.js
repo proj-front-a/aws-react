@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../Store";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const RegisterUser = () => {
   const [msg, setMsg] = useState("");
@@ -35,8 +37,9 @@ const RegisterUser = () => {
   return (
     <center>
       <h1>新規登録ページ</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
+      <Form onSubmit={handleSubmit(onSubmit)} className="w-50">
+      <Form.Group className="mb-3">
+      <Form.Control
           type="email"
           {...register("email", {
             required: "Required",
@@ -46,19 +49,19 @@ const RegisterUser = () => {
             },
           })}
         />
-        {errors.email && errors.email.message}
-        <br />
-        <input
+         <span className="text-danger">{errors.email && errors.email.message}</span>
+      </Form.Group>
+        <Form.Group className="mb-3">
+        <Form.Control
           {...register("password", {
             required: "Required",
           })}
         />
-        {errors.password && errors.password.message}
-        <br />
-        <br />
-        <p>{msg}</p>
-        <button type="submit">登録</button>
-      </form>
+        <span className="text-danger">{errors.password && errors.password.message}</span>
+        </Form.Group>
+        <p className="text-danger">{msg}</p>
+        <Button variant="primary" type="submit">新規登録</Button>
+      </Form>
       <br />
       <div>
         ログインは<Link to={`/login/`}>こちら</Link>

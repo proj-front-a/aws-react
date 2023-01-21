@@ -4,60 +4,64 @@ import { Button, Card } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const ModifyReserv = () => {
-  //ToDo
-  //予約ボタンを押した際のpropsとしてcapacityに含まれるすべての値をstateとして受け取っている
-  //現時点ではcapacity1719の時間帯のみが来る前提で書いているため、
-  //他の時間帯capacity0912,1315,1517が選択されることを想定して時間帯のプロパティ値を変数で扱えるようにする
   const { state } = useLocation();
   console.log(state);
-  const id = state.reserv[0].currentCapacity.id;
-  const category = state.reserv[0].currentCapacity.category;
-  const date = state.reserv[0].currentCapacity.date;
-  const updatecapacity = state.reserv[1];
-  console.log(state.reserv[0].currentCapacity);
-  console.log(updatecapacity);
 
   const [fixCapacity, setFixCapacity] = useState(
     state.reserv[0].currentCapacity
   );
-  console.log(fixCapacity);
+  console.log(fixCapacity, state.reserv[0].currentCapacity);
 
   const [successMsg, setSuccessMsg] = useState("");
 
-  const handleOnClickFixedReserv = () => {
-    // オブジェクトのうち、fixedReservClickで渡された時間帯（例：capacity1719）と同じ時間帯の値を「1⇒0に変更する」
-    // ToDo:「予約ボタン」を一回押しただけだと反映されない。2回目に反映される（処理の順番に問題あり？）
-    //　解決策の参考https://qiita.com/zoukun97/items/0fb14524c33894cc38dd
+  const id = state.reserv[0].currentCapacity.id;
+  const category = state.reserv[0].currentCapacity.category;
+  const date = state.reserv[0].currentCapacity.date;
+  const updatecapacity = state.reserv[1];
+  console.log(updatecapacity);
+
+  // オブジェクトのうち、fixedReservClickで渡された時間帯（例：capacity1719）と同じ時間帯の値を「1⇒0に変更する」
+  const getNewCapacity = () => {
+    console.log(updatecapacity);
     switch (updatecapacity) {
       case "capacity0912":
         setFixCapacity({
           ...fixCapacity,
           capacity012: 0,
         });
-        break;
+        return;
       case "capacity1315":
         setFixCapacity({
           ...fixCapacity,
           capacity1315: 0,
         });
-        break;
+        return;
       case "capacity1719":
         setFixCapacity({
           ...fixCapacity,
           capacity1719: 0,
         });
-        break;
+        console.log(`capacity1719 = ${fixCapacity.capacity1719}`);
+        return;
+
       default:
-        break;
     }
+  };
+
+  const handleOnClickFixedReserv = () => {
+    //予約対象のcapacityxxxxを1⇒0にする
+    getNewCapacity();
     console.log(fixCapacity);
 
+    //getNewCapacityの結果をAPIで更新する
     axios
       .put("http://localhost:3004/capacity/" + id, fixCapacity)
       .then((res) => {
         //予約が成功した時の処理を書く。
         console.log(res);
-        setSuccessMsg("予約に成功しました。");
+        if (res.data !== undefined) {
+          setSuccessMsg("予約に成功しました。");
+        }
       })
       .catch((err) => {
         console.log(err);

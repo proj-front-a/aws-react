@@ -43,14 +43,32 @@ const Calendar = (props) => {
                   {data.capacity0912 === 0 ? (
                     "×"
                   ) : (
-                    <div onClick={() => console.log(data.date)}>◯</div>
+                    <Link to="/reserv/" state={{ reserv }}>
+                      <Button
+                        variant="link"
+                        onClick={() => {
+                          handleOnClickReserv([data, "capacity0912"]);
+                        }}
+                      >
+                        ◯
+                      </Button>
+                    </Link>
                   )}
                 </td>
                 <td>
                   {data.capacity1315 === 0 ? (
                     "×"
                   ) : (
-                    <div onClick={() => console.log(data.date)}>◯</div>
+                    <Link to="/reserv/" state={{ reserv }}>
+                      <Button
+                        variant="link"
+                        onClick={() => {
+                          handleOnClickReserv([data, "capacity1315"]);
+                        }}
+                      >
+                        ◯
+                      </Button>
+                    </Link>
                   )}
                 </td>
                 <td>

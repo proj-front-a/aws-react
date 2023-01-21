@@ -45,8 +45,8 @@ export const Register = (props) => {
     alert("登録しました！");
     // 更新後のデータを画面に反映する
     // 更新後の値を反映したsearchDataをset関数で設定してあげる(API実行回数節約が可能！)
-        const newData = props.searchData.map((existData) => {
-      if(existData.id === data.id) return data;
+    const newData = props.searchData.map((existData) => {
+      if(existData.id === newCapacity.id) return newCapacity;
       return existData;
     })
     props.setData(newData);

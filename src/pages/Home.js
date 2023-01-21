@@ -20,9 +20,10 @@ const Home = () => {
     } else {
       // 家事代行情報を取得する
       const { data } = await axios.get(
-        `http://localhost:3004/capacity?category=${category}`
+        "http://localhost:3004/capacity"
       );
-      searchCapacity = data;
+      // 取得してきた家事代行情報のうち、指定されたカテゴリのもののみを抽出する
+      searchCapacity = data.filter((data) => data.category === category);
       if (searchCapacity.length === 0) {
         setData("Not Found");
       } else {

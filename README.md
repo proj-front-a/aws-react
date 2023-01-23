@@ -255,11 +255,4 @@ npm start
 ---
 
 ## Chapter 一覧
-
-### Chapter 1
-
-### React の画面に、bootstrap を使って装飾を加える。
-
-サンプルの React には、まだ CSS が適用されていない。
-
-そのため React-bootstrap を導入することで、ログイン、新規登録、検索の３画面に装飾を加える。
+https://github.com/proj-front-a/aws-react/tags

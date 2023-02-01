@@ -18,6 +18,7 @@ const RegisterUser = () => {
   } = useForm();
 
   const [UserProfiles, setUserProfiles] = useState();
+
   const onSubmit = async (values) => {
     // 入力された情報がすでに登録されているかどうか確認する
     // TODO①:ここの処理をAPIから取得してくるよう変更

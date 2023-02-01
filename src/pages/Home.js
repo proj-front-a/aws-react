@@ -9,6 +9,7 @@ import { Form, Card, Button } from "react-bootstrap";
 const Home = () => {
   const { actions, state } = useStateMachine({ updateUser });
   const [searchData, setData] = useState([]);
+
   const search = async (category) => {
     let searchCapacity = [];
     console.log("選択されたカテゴリーは" + category);
@@ -16,19 +17,25 @@ const Home = () => {
       setData("");
     } else {
       // 家事代行情報を取得する
-      // TODO③:ここの処理をAPIから取得してくるよう変更
+      // CORSエラー回避策https://qiita.com/naogify/items/69aedc005315abb2eefe
       console.log("axiosローディング表示開始");
-      await axios
-        .get("http://localhost:3004/capacity")
-        .then((res) => {
-          console.log("axiosデータ取得成功");
-          res.data.forEach((data) => {
-            if (data.category === category) searchCapacity.push(data);
-          });
-          console.log("一致したカテゴリーは・・・");
-          console.log(searchCapacity);
-        })
-        .catch((err) => console.log(err));
+      const { data } = await axios
+        // .get("http://localhost:3004/capacity")
+        .get(
+          "https://jjpobcbvt2.execute-api.ap-northeast-1.amazonaws.com/capacity-stage/capacity"
+        );
+      // .then((res) => {
+      console.log("axiosデータ取得成功");
+      console.log(data.body);
+      // 取得してきた家事代行情報のうち、指定されたカテゴリのもののみを抽出する
+      // res.data.forEach((data) => {
+      //   if (data.category === category) searchCapacity.push(data);
+      // });
+      searchCapacity = data.body.filter((data) => data.category === category);
+      console.log("一致したカテゴリーは・・・");
+      console.log(searchCapacity);
+      // })
+      // .catch((err) => console.log(err));
 
       if (searchCapacity.length === 0) {
         setData("Not Found");
@@ -102,7 +109,7 @@ const Home = () => {
             <option value="料理">料理</option>
             <option value="洗濯">洗濯</option>
           </Form.Select>
-          <Calendar searchData={searchData} />
+          <Calendar searchData={searchData} setData={setData} />
         </Card>
       </div>
     </center>

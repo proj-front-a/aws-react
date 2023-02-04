@@ -55,7 +55,6 @@ const ModifyReserv = () => {
 
     //getNewCapacityの結果をAPIで更新する
     axios
-      // .put("http://localhost:3004/capacity/" + id, fixCapacity)
       .put(
         "https://jjpobcbvt2.execute-api.ap-northeast-1.amazonaws.com/capacity-stage/capacity?id=" +
           id,

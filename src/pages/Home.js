@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../Store";
 import { useState } from "react";
 import Calendar from "../component/Calendar";
 import axios from "axios";
-import { Form, Card, Button } from "react-bootstrap";
+import { Form, Card, Button, Navbar, Nav, NavItem } from "react-bootstrap";
 
 const Home = () => {
   const { actions, state } = useStateMachine({ updateUser });
@@ -19,23 +19,15 @@ const Home = () => {
       // 家事代行情報を取得する
       // CORSエラー回避策https://qiita.com/naogify/items/69aedc005315abb2eefe
       console.log("axiosローディング表示開始");
-      const { data } = await axios
-        // .get("http://localhost:3004/capacity")
-        .get(
-          "https://jjpobcbvt2.execute-api.ap-northeast-1.amazonaws.com/capacity-stage/capacity"
-        );
-      // .then((res) => {
+      const { data } = await axios.get(
+        "https://jjpobcbvt2.execute-api.ap-northeast-1.amazonaws.com/capacity-stage/capacity"
+      );
       console.log("axiosデータ取得成功");
       console.log(data.body);
       // 取得してきた家事代行情報のうち、指定されたカテゴリのもののみを抽出する
-      // res.data.forEach((data) => {
-      //   if (data.category === category) searchCapacity.push(data);
-      // });
       searchCapacity = data.body.filter((data) => data.category === category);
       console.log("一致したカテゴリーは・・・");
       console.log(searchCapacity);
-      // })
-      // .catch((err) => console.log(err));
 
       if (searchCapacity.length === 0) {
         setData("Not Found");
@@ -46,53 +38,64 @@ const Home = () => {
       console.log(searchData);
     }
   };
-  const logout = () => {
-    actions.updateUser({ email: "" });
-  };
-  if (state.yourDetail.email === undefined || state.yourDetail.email === "") {
-    return (
-      <center>
-        <h1>ホーム</h1>
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Title>ログイン</Card.Title>
-            <Card.Text>
-              ログインは<Link to={`/login/`}>こちら</Link>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Title>新規登録</Card.Title>
-            <Card.Text>
-              新規登録は<Link to={`/register-user/`}>こちら</Link>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Title>サンプル</Card.Title>
-            <Card.Text>
-              サンプルは<Link to={`/sample/`}>こちら</Link>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Title>bootstrap使用例</Card.Title>
-            <Card.Text>
-              bootstrap使用例は<Link to={`/bootstrap/`}>こちら</Link>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </center>
-    );
-  }
+  // const logout = () => {
+  //   actions.updateUser({ email: "" });
+  // };
+  // if (state.yourDetail.email === undefined || state.yourDetail.email === "") {
+  //   return (
+  //     <center>
+  //       <h1>ホーム</h1>
+  //       <Card style={{ width: "18rem" }}>
+  //         <Card.Body>
+  //           <Card.Title>ログイン</Card.Title>
+  //           <Card.Text>
+  //             ログインは<Link to={`/login/`}>こちら</Link>
+  //           </Card.Text>
+  //         </Card.Body>
+  //       </Card>
+  //       <Card style={{ width: "18rem" }}>
+  //         <Card.Body>
+  //           <Card.Title>新規登録</Card.Title>
+  //           <Card.Text>
+  //             新規登録は<Link to={`/register-user/`}>こちら</Link>
+  //           </Card.Text>
+  //         </Card.Body>
+  //       </Card>
+  //       <Card style={{ width: "18rem" }}>
+  //         <Card.Body>
+  //           <Card.Title>サンプル</Card.Title>
+  //           <Card.Text>
+  //             サンプルは<Link to={`/sample/`}>こちら</Link>
+  //           </Card.Text>
+  //         </Card.Body>
+  //       </Card>
+  //       <Card style={{ width: "18rem" }}>
+  //         <Card.Body>
+  //           <Card.Title>bootstrap使用例</Card.Title>
+  //           <Card.Text>
+  //             bootstrap使用例は<Link to={`/bootstrap/`}>こちら</Link>
+  //           </Card.Text>
+  //         </Card.Body>
+  //       </Card>
+  //     </center>
+  //   );
+  // }
   return (
     <center>
-      <h1>ホーム</h1>
-      <Button onClick={logout}>ログアウト</Button>
-      <div>
+      <Navbar bg="dark" variant="dark" className="text-light">
+        <Nav className="me-auto">
+          <NavItem className="display-6">家事代行サービス</NavItem>
+        </Nav>
+        <Nav>
+          <NavItem>
+            <Button variant="secondary" onClick={logout}>
+              ログアウト
+            </Button>
+          </NavItem>
+        </Nav>
+      </Navbar>
+      <div className="w-75">
+        <h1 className="m-3">ホーム</h1>
         <Card border="primary" style={{ width: "25rem" }}>
           <h2>家事代行を検索</h2>
           <Form.Select

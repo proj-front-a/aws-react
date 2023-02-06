@@ -38,9 +38,9 @@ const Home = () => {
       console.log(searchData);
     }
   };
-  // const logout = () => {
-  //   actions.updateUser({ email: "" });
-  // };
+  const logout = () => {
+    actions.updateUser({ email: "" });
+  };
   // if (state.yourDetail.email === undefined || state.yourDetail.email === "") {
   //   return (
   //     <center>

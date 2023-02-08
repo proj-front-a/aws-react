@@ -6,8 +6,17 @@ import { Sample } from "./pages/Sample";
 // import RegisterUser from "./pages/RegisterUser";
 import { Bootstrap } from "./pages/Bootstrap";
 import ModifyReserv from "./pages/ModifyReserv";
+import "@aws-amplify/ui-react/styles.css";
+import {
+  withAuthenticator,
+  Button,
+  Heading,
+  Image,
+  View,
+  Card,
+} from "@aws-amplify/ui-react";
 
-const App = () => {
+const App = ({ signOut }) => {
   return (
     <>
       <Store />
@@ -21,8 +30,9 @@ const App = () => {
           <Route path={`/reserv/`} element={<ModifyReserv />} />
         </Routes>
       </BrowserRouter>
+      <Button onClick={signOut}>Sign Out</Button>
     </>
   );
 };
 
-export default App;
+export default withAuthenticator(App);

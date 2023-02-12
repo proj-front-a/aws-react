@@ -8,17 +8,35 @@ import { Bootstrap } from "./pages/Bootstrap";
 import ModifyReserv from "./pages/ModifyReserv";
 import "@aws-amplify/ui-react/styles.css";
 import {
+  Authenticator,  
+  AmplifySignIn,
   withAuthenticator,
   Button,
   Heading,
   Image,
   View,
   Card,
+  translations 
 } from "@aws-amplify/ui-react";
+import { I18n } from 'aws-amplify';
+I18n.putVocabularies(translations);
+I18n.setLanguage('ja');
+// 以下のような形で日本語と英語を紐づけた辞書を作成する
+const dict = {
+  ja: {
+    "Forgot your password?": "パスワードを忘れた場合",
+    "Reset password": "パスワードをリセット",
+    "No account?": "アカウントを持っていない場合",
+    "Create account": "サインアップ",
+  },
+};
+// 作成した辞書を渡して反映させる
+I18n.putVocabularies(dict);
 
 const App = ({ signOut }) => {
   return (
     <>
+    <Authenticator>
       <Store />
       <BrowserRouter>
         <Routes>
@@ -31,8 +49,10 @@ const App = ({ signOut }) => {
         </Routes>
       </BrowserRouter>
       <Button onClick={signOut}>Sign Out</Button>
+      </ Authenticator>
     </>
   );
 };
 
-export default withAuthenticator(App);
+// export default withAuthenticator(App);
+export default App;

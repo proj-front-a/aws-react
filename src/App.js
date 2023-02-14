@@ -33,7 +33,6 @@ const dict = {
 // 作成した辞書を渡して反映させる
 I18n.putVocabularies(dict);
 
-const App = ({ signOut }) => {
 const App = () => {
     return (
     <Authenticator>

@@ -34,25 +34,28 @@ const dict = {
 I18n.putVocabularies(dict);
 
 const App = ({ signOut }) => {
-  return (
-    <>
+const App = () => {
+    return (
     <Authenticator>
-      <Store />
-      <BrowserRouter>
-        <Routes>
-          <Route path={`/`} element={<Home />} />
-          {/* <Route path={`/register-user/`} element={<RegisterUser />} />
-          <Route path={`/login/`} element={<Login />} /> */}
-          <Route path={`/sample/`} element={<Sample />} />
-          <Route path={`/bootstrap/`} element={<Bootstrap />} />
-          <Route path={`/reserv/`} element={<ModifyReserv />} />
-        </Routes>
-      </BrowserRouter>
-      <Button onClick={signOut}>Sign Out</Button>
+      {({signOut, user})=>(
+        <>
+        <Store />
+          <BrowserRouter>
+            <Routes>
+              <Route path={`/`} element={<Home />} />
+              {/* <Route path={`/register-user/`} element={<RegisterUser />} />
+              <Route path={`/login/`} element={<Login />} /> */}
+              <Route path={`/sample/`} element={<Sample />} />
+              <Route path={`/bootstrap/`} element={<Bootstrap />} />
+              <Route path={`/reserv/`} element={<ModifyReserv />} />
+            </Routes>
+          </BrowserRouter>
+          <Button onClick={signOut}>Sign Out</Button>
+          </>
+        )}
       </ Authenticator>
-    </>
+
   );
 };
 
-// export default withAuthenticator(App);
 export default App;

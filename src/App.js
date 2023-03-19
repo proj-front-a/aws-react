@@ -8,6 +8,7 @@ import { Bootstrap } from "./pages/Bootstrap";
 const App = () => {
   return (
     <>
+      <center>
       <BrowserRouter>
         <Routes>
           <Route path={`/`} element={<Home />} />
@@ -17,6 +18,7 @@ const App = () => {
           <Route path={`/bootstrap/`} element={<Bootstrap />} />
         </Routes>
       </BrowserRouter>
+      </center>
     </>
   );
 };

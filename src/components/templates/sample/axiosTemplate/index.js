@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export const AxiosSample = () => {
+export const AxiosTemplate = () => {
   const getAPI = async () => {
     const { data } = await axios.get(
       "https://nj7quvef16.execute-api.ap-northeast-1.amazonaws.com/users-stage/users"

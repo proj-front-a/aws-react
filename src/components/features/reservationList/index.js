@@ -1,12 +1,12 @@
-import React from "react";
-import { Register } from "../component/Register";
+import React from 'react';
 import Table from 'react-bootstrap/Table';
+import { AddReservation } from "../addReservation";
 
-const Calendar = (props) => {
-  if (props.searchData.length === 0) return <div></div>;
-  if (props.searchData === "") return <div></div>;
-  if (props.searchData === "Not Found")
-    return <div> 検索結果がありません。</div>;
+export const ReservationList = (props) => {
+    if (props.searchData.length === 0) return <div></div>;
+    if (props.searchData === "") return <div></div>;
+    if (props.searchData === "Not Found")
+      return <div> 検索結果がありません。</div>;
   return (
     <div>
       <Table striped bordered hover>
@@ -28,7 +28,7 @@ const Calendar = (props) => {
                   {data.capacity0912 === 0 ? (
                     "×"
                   ) : (
-                    <Register
+                    <AddReservation
                       date={data.date}
                       target={data}
                       text="◯"
@@ -44,7 +44,7 @@ const Calendar = (props) => {
                   {data.capacity1315 === 0 ? (
                     "×"
                   ) : (
-                    <Register
+                    <AddReservation
                       date={data.date}
                       target={data}
                       text="◯"
@@ -58,7 +58,7 @@ const Calendar = (props) => {
                   {data.capacity1517 === 0 ? (
                     "×"
                   ) : (
-                    <Register
+                    <AddReservation
                       date={data.date}
                       target={data}
                       text="◯"
@@ -72,7 +72,7 @@ const Calendar = (props) => {
                   {data.capacity1719 === 0 ? (
                     "×"
                   ) : (
-                    <Register
+                    <AddReservation
                       date={data.date}
                       target={data}
                       text="◯"
@@ -88,7 +88,5 @@ const Calendar = (props) => {
         </tbody>
       </Table>
     </div>
-  );
+  )
 };
-
-export default Calendar;

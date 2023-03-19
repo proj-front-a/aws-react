@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-const FormSample = () => {
+const FormTemplate = () => {
     //フォームを定義
     const { handleSubmit, register, formState: { errors } } = useForm();
     //送信時実行する関数を定義
@@ -39,4 +39,4 @@ const FormSample = () => {
   );
 };
 
-export default FormSample;
+export default FormTemplate;

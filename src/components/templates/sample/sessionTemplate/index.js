@@ -1,7 +1,7 @@
 import React from "react";
 import { createStore, useStateMachine } from "little-state-machine";
 
-export const SessionSample = () => {
+export const SessionTemplate = () => {
   createStore({
     yourDetail: { name: "" },
   });

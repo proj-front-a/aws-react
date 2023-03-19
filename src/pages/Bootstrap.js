@@ -1,5 +1,5 @@
 import React from "react";
-import BasicExample from "../component/bootstrap/basic-example";
+import BasicExample from "../components/templates/sample/bootstrapTemplate";
 
 export const Bootstrap = () => {
   return (

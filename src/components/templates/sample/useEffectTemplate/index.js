@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
-export const UseEffectSample = () => {
+export const UseEffectTemplate = () => {
     const [ count, setCount ] = useState(0);
       /* 
   * useEffectは、第一引数にcallbackを入れて、第二引数に依存する値の配列を入れる

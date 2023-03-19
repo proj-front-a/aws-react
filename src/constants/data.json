@@ -34,6 +34,26 @@
       "id": 7,
       "email": "user122@test.com",
       "password": "user1"
+    },
+    {
+      "id": 8,
+      "email": "mi-ihara@tg-inet.co.jp",
+      "password": "user1"
+    },
+    {
+      "id": 9,
+      "email": "honoh_test1@tg-inet.co.jp",
+      "password": "user1"
+    },
+    {
+      "id": 10,
+      "email": "a111@a.com",
+      "password": "user1"
+    },
+    {
+      "id": 11,
+      "email": "a11111@a.com",
+      "password": "user1"
     }
   ],
   "capacity": [
@@ -43,8 +63,8 @@
       "date": "2023/03/22",
       "capacity0912": 0,
       "capacity1315": 0,
-      "capacity1517": 0,
-      "capacity1719": 0
+      "capacity1517": 1,
+      "capacity1719": 1
     },
     {
       "id": 2,
@@ -105,7 +125,7 @@
       "category": "洗濯",
       "date": "2023/03/23",
       "capacity0912": 0,
-      "capacity1315": 0,
+      "capacity1315": 1,
       "capacity1517": 0,
       "capacity1719": 0
     },
@@ -113,8 +133,8 @@
       "id": 9,
       "category": "洗濯",
       "date": "2023/03/24",
-      "capacity0912": 0,
-      "capacity1315": 0,
+      "capacity0912": 1,
+      "capacity1315": 1,
       "capacity1517": 0,
       "capacity1719": 0
     }

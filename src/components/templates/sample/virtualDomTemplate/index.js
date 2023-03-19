@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 
-export const VDomSample = () => {
+export const VirtualDomTemplate = () => {
     const [text, setText] = useState("変更前仮想DOM");
     const method = () => {
         setText("変更後仮想DOM");

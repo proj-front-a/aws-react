@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export const RouterSample = () => {
+export const RouterTemplate = () => {
   const navigate = useNavigate();
   const goToLogin = () => {
     console.log("ログインページへ遷移");

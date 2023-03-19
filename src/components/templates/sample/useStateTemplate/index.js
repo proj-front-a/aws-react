@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 
-export const UseStateSample = () => {
+export const UseStateTemplate = () => {
     //一つ目に変数名、２つ目に変数に値を格納する関数名を定義
     const [text, setText] = useState("A");
   return (

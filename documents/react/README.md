@@ -67,8 +67,10 @@ https://zenn.dev/antez/books/6da596a697aa86/viewer/7434bb
 そのため、SPAは初期ページの読み込みに時間をかかるケースが多い。
 
 ### React活用例
-Trivago（旅行サイト）
+[Trivago（旅行サイト）](https://www.trivago.jp/ja/lm?themeId=280&search=200-85&sem_keyword=%E3%83%9B%E3%83%86%E3%83%AB%20trivago&sem_creativeid=640138475440&sem_matchtype=e&sem_network=g&sem_device=c&sem_placement=&sem_target=&sem_adposition=&sem_param1=&sem_param2=&sem_campaignid=270625863&sem_adgroupid=103450630281&sem_targetid=kwd-357619928764&sem_location=1009178&cipc=br&cip=8119000005&gclid=CjwKCAjwiOCgBhAgEiwAjv5whCbnATuiXRnnXAsJ--_QnISA8jyMZoT-VjJj8TbdN5RJlL7Wk6kD_xoCOqoQAvD_BwE)
 検索結果の絞り込みなどだけでなく、ホテルの各属性情報についても遷移することなく表示。
+
+
 ## React環境構築
 ここでは、ローカル環境にReactプロジェクトを作成する方法を紹介する。
 ### Node.jsとは？

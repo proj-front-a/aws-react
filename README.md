@@ -58,8 +58,6 @@
 
 ## React
 
-0. Reactとは(概要)
-
 1. Progate の実施（無料会員で実施可能）
 
 **【実施するコース】**
@@ -69,7 +67,9 @@
 
 - [React Ⅰ](https://prog-8.com/lessons/react/study/1)（「state」という React の最も大事な機能を学べる）
 
-2. [公式サイトのチュートリアルを実施](https://ja.reactjs.org/tutorial/tutorial.html)
+2. [React入門](documents/react/README.md)
+
+3. [公式サイトのチュートリアルを実施](https://ja.reactjs.org/tutorial/tutorial.html)
 
 ※公式のチュートリアルは、コードの説明などがなく、動きを理解するのがやや難しいため、以下に参考サイトを記載。
 
